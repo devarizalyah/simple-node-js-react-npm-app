@@ -11,23 +11,15 @@ pipeline {
                 sh 'npm install'
             }
         }
-	  stage('Build Reactjs') {
+	stage('Build Reactjs') {
             steps {
                 sh 'npm run build'
             }
         }
-        stage('Test') {
+        stage('Finish') {
             steps {
-		sh 'chmod +x -R ${env.WORKSPACE}'
-                sh './jenkins/scripts/test.sh'
-            }
-        }
-        stage('Deliver') { 
-            steps {
-		sh 'chmod +x -R ${env.WORKSPACE}'
-                sh './jenkins/scripts/deliver.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
+		sh "chmod +x -R ${env.WORKSPACE}"
+                sh "cp -r ${env.WORKSPACE}/simple-node-js-react-npm-app/build/* /home/hik/dockApp/lamp/html/depo_kl_admin.dev/public_html/"
             }
         }
     }
