@@ -16,11 +16,5 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Finish') {
-            steps {
-		sh "chmod +x -R ${env.WORKSPACE}"
-                sh "docker cp -Rf 281096715c76:${env.WORKSPACE}/build/* /home/hik/dockApp/lamp/html/depo_kl_admin.dev/public_html/"
-            }
-        }
     }
 }
