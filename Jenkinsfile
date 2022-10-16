@@ -19,7 +19,7 @@ pipeline {
         stage('Finish') {
             steps {
 		sh "chmod +x -R ${env.WORKSPACE}"
-                sh "sudo cp -Rf ${env.WORKSPACE}/build/* /home/hik/dockApp/lamp/html/depo_kl_admin.dev/public_html"
+                sh "cp -Rf ${env.WORKSPACE}/build/* /home/hik/dockApp/lamp/html/depo_kl_admin.dev/public_html"
             }
         }
     }
